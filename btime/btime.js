@@ -166,7 +166,7 @@ function showDigitalBTime ( localT, time, x, format ) {
 	format = format.replace("%2y", y-parseInt(y/100)*100);
 	format = format.replace("%m", m+1);
 	format = format.replace("%0m", (m+1>9)?(m+1):("0"+(m+1)));
-	format = format.replace("%3m", month1[m]);
+	format = format.replace("%1m", month1[m]);
 	format = format.replace("%2m", month2[m]);
 	format = format.replace("%d", d);
 	format = format.replace("%0d",(d>9)?d:("0"+d));
@@ -184,7 +184,7 @@ function showDigitalBTime ( localT, time, x, format ) {
 	format = format.replace("%j", j);
 	format = format.replace("%0j",(j>9)?j:("0"+j));
 	format = format.replace("%r", r);
-	format = format.replace("%0r",(h>9)?r:("0"+r));
+	format = format.replace("%0r",(r>9)?r:("0"+r));
 	format = format.replace("%w",watch(h));
 	format = format.replace("%s",worship(h));
 	x.innerHTML = format;
