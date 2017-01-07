@@ -1,0 +1,53 @@
+/****************************************************************
+	Стрелочные часы на базу CSS
+	Используются файлы:
+		bclock.jpg - циферблат (750х750)
+		hand.png - часовая стрелка (50х410)
+*****************************************************************/
+/* Циферблат */
+.clock-container {
+	display: inline-block;
+	height: inherit;
+	width: inherit;
+}
+.clock {
+	background: #fff url(bclock.jpg) no-repeat center;
+	background-size: 100%;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	min-height: 150px;
+	min-width: 150px;
+	max-height: 750px;
+	max-width: 750px;
+}
+/* Контейнеры стрелок */
+.hours-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+/* Часовая стрелка */
+.hours {
+	background: url(hand.png) no-repeat center;
+	background-size: cover;	
+	height: 45%;
+	left: 47.0%;
+	position: absolute;
+	top: 14%;
+	transform-origin: 50% 80%;
+	width: 5.3%;
+	z-index: 20;
+}
+
+/* Анимация */
+@keyframes rotate {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+.hours-container {
+	animation: rotate 86400s infinite linear;
+}

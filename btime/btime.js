@@ -1,7 +1,7 @@
-/**************************************************************
+/****************************************************************
 Функция getByzantineTime выводит на экран византийское время
 
-Версия: 1.1 от 06.01.2017
+Версия: 2.0 от 07.01.2017
 
 Пример:
 	https://bogaiskov.ru/location.html
@@ -15,7 +15,15 @@
 	x - элемент, в который будет передан html-текст, 
 		содержащий информацию о текущем времени.
 		
-	format - формат отображения византийского времени. 
+	format - формат отображения византийского времени.
+		Если format == 'image', то отображаются стрелочные 
+		византийские часы. В качестве элемента x укажите 
+		блочный элемент  необходимого размера.
+		Для корректного отображения часов, необходимо
+		подключить файл таблицы стилей btime/btime.css, 
+		расположенный в той же папке, что и скрипт.
+		
+		В остальных случаях время отображается в виде текста.
 		Используйте следующие плейсхолдеры:
 		%y - год,
 		%2y - две последние цифры года,
@@ -106,8 +114,8 @@ function getByzantineTime (x, format="", mode=[90,0], time=0 ) {
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(function(position) {
 					if (Math.abs(position.coords.latitude) < 66.5622) {
-						localT = sunTime ( position.coords.latitude, position.coords.longitude, time );
-						showDigitalBTime( localT, time, x, format );
+						var sunset = sunTime ( position.coords.latitude, position.coords.longitude, time );
+						showDigitalBTime( sunset, time, x, format );
 						return true;
 					} else {	// За полярным кругом выдаем псевдо-византийское время с полночью в 18:00
 						showDigitalBTime( 18, time, x, format );
@@ -118,8 +126,8 @@ function getByzantineTime (x, format="", mode=[90,0], time=0 ) {
 				showDigitalBTime( 18, time, x );	// выдаем псевдо-византийское время с полночью в 18:00
 			}
 		} else {
-			localT = sunTime ( mode[0], mode[1], time );
-			showDigitalBTime( localT, time, x, format );
+			var sunset = sunTime ( mode[0], mode[1], time );
+			showDigitalBTime( sunset, time, x, format );
 			return true;
 		}
 	} else {
@@ -133,64 +141,80 @@ function getByzantineTime (x, format="", mode=[90,0], time=0 ) {
 /**************************************************************
 Отображение на экране византийского времени
 
-	localT 	- время заката солнца в часах.
+	sunset 	- время заката солнца в часах.
 	time 	- время по Григорианскому календарю в мсек. 
 	x 		- элемент, в который будет передан html-текст.
 	format 	- формат отображения византийского времени. 
 *****************************************************************/
-function showDigitalBTime ( localT, time, x, format ) {
+function showDigitalBTime ( sunset, time, x, format ) {
+	
 	var month1 = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
 	var month2 = ["янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"];
 	var weekday1 = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
 	var weekday2 = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
 	var weekday3 = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
-	
-	bt = time + (24 - localT)*60*60*1000;
-	bd = new Date(bt);
-	h = bd.getHours();					// Часы 
-	m = bd.getMinutes();
-	l = parseInt(m/6);					// Лепты	(1 час = 10 лепт, 1 лепта = 6 минут)
-	s = bd.getSeconds();
-	j = parseInt(((m-l*6)*60+s)/24);	// Мойры	(1 лепта = 15 мойр, 1 мойра = 24 секунды)
-	r = parseInt(((m-l*6)*60+s-j*24)/3);// Рипы		(1 мойра = 8 рип, 1 рипа = 3 секунды)
-	n = bd.getDay();
-	// Переходим на Юлианский календарь
-	y = bd.getFullYear();
-	dd = (y-y%100)/100 - (y-y%400)/400 - 2;
-	ud = new Date(bt - dd*24*60*60*1000);
-	y = ud.getFullYear();
-	m = ud.getMonth();
-	d = ud.getDate();
 
-	format = format.replace("%y", y);
-	format = format.replace("%2y", y-parseInt(y/100)*100);
-	format = format.replace("%m", m+1);
-	format = format.replace("%0m", (m+1>9)?(m+1):("0"+(m+1)));
-	format = format.replace("%1m", month1[m]);
-	format = format.replace("%2m", month2[m]);
-	format = format.replace("%d", d);
-	format = format.replace("%0d",(d>9)?d:("0"+d));
-	format = format.replace("%n", n);
-	format = format.replace("%0n",(n>9)?n:("0"+n));
-	format = format.replace("%1n", weekday1[n]);
-	format = format.replace("%2n", weekday2[n]);
-	format = format.replace("%N", weekday3[n]);
-	format = format.replace("%h", h);
-	format = format.replace("%0h",(h>9)?h:("0"+h));
-	format = format.replace("%1h",(h<12)?(h+1):(h-11));
-	format = format.replace("%H", (h<12)?((h+1)+"-й час ночи"):((h-11)+"-й час дня"));
-	format = format.replace("%l", l);
-	format = format.replace("%0l",(l>9)?l:("0"+l));
-	format = format.replace("%j", j);
-	format = format.replace("%0j",(j>9)?j:("0"+j));
-	format = format.replace("%r", r);
-	format = format.replace("%0r",(r>9)?r:("0"+r));
-	format = format.replace("%w",watch(h));
-	format = format.replace("%s",worship(h));
-	x.innerHTML = format;
+	var bt = time + (24 - sunset)*60*60*1000;
+	var bd = new Date(bt);
+	var h = bd.getHours();					// Часы 
+	var m = bd.getMinutes();				
+	var l = parseInt(m/6);					// Лепты	(1 час = 10 лепт, 1 лепта = 6 минут)
+	var s = bd.getSeconds();
+	var j = parseInt(((m-l*6)*60+s)/24);	// Мойры	(1 лепта = 15 мойр, 1 мойра = 24 секунды)
+	var r = parseInt(((m-l*6)*60+s-j*24)/3);// Рипы		(1 мойра = 8 рип, 1 рипа = 3 секунды)
+	var n = bd.getDay();					// День недели
+	// Переходим на Юлианский календарь
+	var y = bd.getFullYear();
+	var dd = (y-y%100)/100 - (y-y%400)/400 - 2;
+	var ud = new Date(bt - dd*24*60*60*1000);
+	y = ud.getFullYear();					// Год
+	m = ud.getMonth();						// Месяц
+	var d = ud.getDate();					// День
+
+	if (format == 'image') {
+		// "Рисуем" часы
+		x.innerHTML = '<div class="clock-container"><article class="clock"><div class="hours-container"><div id="hoursHands" class="hours"></div></div></article></div>';	
+		var size = Math.min(parseInt(x.style.width), parseInt(x.style.height));
+		x.style.width = size+"px"; 
+		x.style.height = size+"px";
+		// Устанавливаем точку отсчета часов в соответствии 
+		// с местным византийским временем пользователя
+		var angle = (h+m/60) * 15;
+		var el = document.getElementById('hoursHands');
+		el.style.webkitTransform = 'rotateZ('+ angle +'deg)';
+		el.style.transform = 'rotateZ('+ angle +'deg)';
+	} else {
+		format = format.replace("%y", y);
+		format = format.replace("%2y", y-parseInt(y/100)*100);
+		format = format.replace("%m", m+1);
+		format = format.replace("%0m", (m+1>9)?(m+1):("0"+(m+1)));
+		format = format.replace("%1m", month1[m]);
+		format = format.replace("%2m", month2[m]);
+		format = format.replace("%d", d);
+		format = format.replace("%0d",(d>9)?d:("0"+d));
+		format = format.replace("%n", n);
+		format = format.replace("%0n",(n>9)?n:("0"+n));
+		format = format.replace("%1n", weekday1[n]);
+		format = format.replace("%2n", weekday2[n]);
+		format = format.replace("%N", weekday3[n]);
+		format = format.replace("%h", h);
+		format = format.replace("%0h",(h>9)?h:("0"+h));
+		format = format.replace("%1h",(h<12)?(h+1):(h-11));
+		format = format.replace("%H", (h<12)?((h+1)+"-й час ночи"):((h-11)+"-й час дня"));
+		format = format.replace("%l", l);
+		format = format.replace("%0l",(l>9)?l:("0"+l));
+		format = format.replace("%j", j);
+		format = format.replace("%0j",(j>9)?j:("0"+j));
+		format = format.replace("%r", r);
+		format = format.replace("%0r",(r>9)?r:("0"+r));
+		format = format.replace("%w",watch(h));
+		format = format.replace("%s",worship(h));
+		x.innerHTML = format;
+	}
 	return;
 	
 	function watch (h) {
+		var t;
 		if (h < 3) t = "I стража ночи";
 		else if (h < 6) t = "II стража ночи";
 		else if (h < 9) t = "III стража ночи";
@@ -202,6 +226,7 @@ function showDigitalBTime ( localT, time, x, format ) {
 		return t;
 	}
 	function worship (h) {
+		var t;
 		if (h < 3) t = "Вечерня";
 		else if (h < 6) t = "Повечерие";
 		else if (h < 9) t = "Полунощница";
@@ -213,6 +238,8 @@ function showDigitalBTime ( localT, time, x, format ) {
 		return t;
 	}
 }
+
+
 
 /**************************************************************
 Расчет времени восхода/заката солнца
