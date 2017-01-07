@@ -1,7 +1,7 @@
 /****************************************************************
 Функция getByzantineTime выводит на экран византийское время
 
-Версия: 2.1 от 07.01.2017
+Версия: 2.2 от 07.01.2017
 
 Пример:
 	https://bogaiskov.ru/location.html
@@ -16,12 +16,13 @@
 		содержащий информацию о текущем времени.
 		
 	format - формат отображения византийского времени.
-		Если format == 'image', то отображаются стрелочные 
-		византийские часы. В качестве элемента x укажите 
-		блочный элемент  необходимого размера.
+		Если format == 'image' или 'img', то отображаются 
+		стрелочные византийские часы. В качестве элемента 
+		x укажите блочный элемент необходимого размера.
 		Для корректного отображения часов, необходимо
 		подключить файл таблицы стилей btime/btime.css, 
 		расположенный в той же папке, что и скрипт.
+		При format == 'img' стрелка неподвижна.
 		
 		В остальных случаях время отображается в виде текста.
 		Используйте следующие плейсхолдеры:
@@ -107,8 +108,10 @@ function getByzantineTime (x, format="", mode=[90,0], time=0 ) {
 	if (!x || (x === undefined) || (x.innerHTML === undefined)) return false;
 	if (!format) format="%0h:%0l:%0j:%0r - %w (%s)";
 	
-	if (time) var d = new Date(time);
-	else {
+	if (time) {
+		var d = new Date(time);
+		if (format == 'image') format = 'img';
+	} else {
 		var d = new Date ();
 		time = d.getTime();
 	}
@@ -177,18 +180,20 @@ function showDigitalBTime ( sunset, time, x, format ) {
 	m = ud.getMonth();						// Месяц
 	var d = ud.getDate();					// День
 
-	if (format == 'image') {
+	if (format == 'image' || format == 'img') {
 		// "Рисуем" часы
-		x.innerHTML = '<div class="clock-container"><article class="clock"><div class="hours-container"><div id="hoursHands" class="hours"></div></div></article></div>';	
+		
+		x.innerHTML = '<div class="clock-container"><article class="clock"><div class="hours-container"><div id="'+x.id+'-hoursHands" class="hours"></div></div></article></div>';	
 		var size = Math.min(parseInt(x.style.width), parseInt(x.style.height));
 		x.style.width = size+"px"; 
 		x.style.height = size+"px";
 		// Устанавливаем точку отсчета часов в соответствии 
 		// с местным византийским временем пользователя
 		var angle = (h+m/60) * 15;
-		var el = document.getElementById('hoursHands');
+		var el = document.getElementById(x.id+'-hoursHands');
 		el.style.webkitTransform = 'rotateZ('+ angle +'deg)';
 		el.style.transform = 'rotateZ('+ angle +'deg)';
+		if (format == 'img') el.parentNode.style.animation = 'none';
 	} else {
 		format = format.replace("%y", y);
 		format = format.replace("%2y", y-parseInt(y/100)*100);
