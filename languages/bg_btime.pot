@@ -1,0 +1,289 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Bg BTime\n"
+"POT-Creation-Date: 2017-01-08 17:01+0300\n"
+"PO-Revision-Date: 2017-01-08 16:30+0300\n"
+"Last-Translator: Vadim Bogaiskov <vadim.bogaiskov@gmail.com>\n"
+"Language-Team: Vadim Bogaiskov <vadim.bogaiskov@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: bg_btime.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: bg_btime.php:55
+msgid "January"
+msgstr ""
+
+#: bg_btime.php:55
+msgid "February"
+msgstr ""
+
+#: bg_btime.php:55
+msgid "March"
+msgstr ""
+
+#: bg_btime.php:55
+msgid "April"
+msgstr ""
+
+#: bg_btime.php:55 bg_btime.php:56
+msgid "May"
+msgstr ""
+
+#: bg_btime.php:55
+msgid "June"
+msgstr ""
+
+#: bg_btime.php:55
+msgid "July"
+msgstr ""
+
+#: bg_btime.php:55
+msgid "August"
+msgstr ""
+
+#: bg_btime.php:55
+msgid "September"
+msgstr ""
+
+#: bg_btime.php:55
+msgid "October"
+msgstr ""
+
+#: bg_btime.php:55
+msgid "November"
+msgstr ""
+
+#: bg_btime.php:55
+msgid "December"
+msgstr ""
+
+#: bg_btime.php:56
+msgid "Jan"
+msgstr ""
+
+#: bg_btime.php:56
+msgid "Feb"
+msgstr ""
+
+#: bg_btime.php:56
+msgid "Mar"
+msgstr ""
+
+#: bg_btime.php:56
+msgid "Apr"
+msgstr ""
+
+#: bg_btime.php:56
+msgid "Jun"
+msgstr ""
+
+#: bg_btime.php:56
+msgid "Jul"
+msgstr ""
+
+#: bg_btime.php:56
+msgid "Aug"
+msgstr ""
+
+#: bg_btime.php:56
+msgid "Sep"
+msgstr ""
+
+#: bg_btime.php:56
+msgid "Oct"
+msgstr ""
+
+#: bg_btime.php:56
+msgid "Nov"
+msgstr ""
+
+#: bg_btime.php:56
+msgid "Dec"
+msgstr ""
+
+#: bg_btime.php:57
+msgid "sunday"
+msgstr ""
+
+#: bg_btime.php:57
+msgid "monday"
+msgstr ""
+
+#: bg_btime.php:57
+msgid "tuesday"
+msgstr ""
+
+#: bg_btime.php:57
+msgid "wednesday"
+msgstr ""
+
+#: bg_btime.php:57
+msgid "thursday"
+msgstr ""
+
+#: bg_btime.php:57
+msgid "friday"
+msgstr ""
+
+#: bg_btime.php:57
+msgid "saturday"
+msgstr ""
+
+#: bg_btime.php:58
+msgid "Sun"
+msgstr ""
+
+#: bg_btime.php:58
+msgid "Mon"
+msgstr ""
+
+#: bg_btime.php:58
+msgid "Tue"
+msgstr ""
+
+#: bg_btime.php:58
+msgid "Wed"
+msgstr ""
+
+#: bg_btime.php:58
+msgid "Thu"
+msgstr ""
+
+#: bg_btime.php:58
+msgid "Fri"
+msgstr ""
+
+#: bg_btime.php:58
+msgid "Sat"
+msgstr ""
+
+#: bg_btime.php:59
+msgid "Sunday"
+msgstr ""
+
+#: bg_btime.php:59
+msgid "Monday"
+msgstr ""
+
+#: bg_btime.php:59
+msgid "Tuesday"
+msgstr ""
+
+#: bg_btime.php:59
+msgid "Wednesday"
+msgstr ""
+
+#: bg_btime.php:59
+msgid "Thursday"
+msgstr ""
+
+#: bg_btime.php:59
+msgid "Friday"
+msgstr ""
+
+#: bg_btime.php:59
+msgid "Saturday"
+msgstr ""
+
+#: bg_btime.php:60
+msgid " AM"
+msgstr ""
+
+#: bg_btime.php:60
+msgid " PM"
+msgstr ""
+
+#: bg_btime.php:61
+msgid "I watch AM"
+msgstr ""
+
+#: bg_btime.php:61
+msgid "II watch AM"
+msgstr ""
+
+#: bg_btime.php:61
+msgid "III watch AM"
+msgstr ""
+
+#: bg_btime.php:61
+msgid "IV watch AM"
+msgstr ""
+
+#: bg_btime.php:61
+msgid "I watch PM"
+msgstr ""
+
+#: bg_btime.php:61
+msgid "II watch PM"
+msgstr ""
+
+#: bg_btime.php:61
+msgid "III watch PM"
+msgstr ""
+
+#: bg_btime.php:61
+msgid "IV watch PM"
+msgstr ""
+
+#: bg_btime.php:62
+msgid "Vespers"
+msgstr ""
+
+#: bg_btime.php:62
+msgid "Compline"
+msgstr ""
+
+#: bg_btime.php:62
+msgid "Midnight"
+msgstr ""
+
+#: bg_btime.php:62
+msgid "Matins"
+msgstr ""
+
+#: bg_btime.php:62
+msgid "1st hour"
+msgstr ""
+
+#: bg_btime.php:62
+msgid "3rd hour"
+msgstr ""
+
+#: bg_btime.php:62
+msgid "6th hour"
+msgstr ""
+
+#: bg_btime.php:62
+msgid "9th hour"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Bg BTime"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://bogaiskov.ru/bg_btime/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Calculates and displays Byzantine time in your location."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "VBog"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://bogaiskov.ru"
+msgstr ""

@@ -1,7 +1,7 @@
 /****************************************************************
 Функция getByzantineTime выводит на экран византийское время
 
-Версия: 2.2 от 07.01.2017
+Версия: 2.3 от 08.01.2017
 
 Пример:
 	https://bogaiskov.ru/location.html
@@ -104,6 +104,19 @@
 	false 	- если отображено церковное время или ошибка.
 		
 *****************************************************************/
+
+if (bg_btime === undefined && !bg_btime) {
+	var bg_btime = [];
+	bg_btime['month1'] = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+	bg_btime['month2'] = ["янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"];
+	bg_btime['weekday1'] = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
+	bg_btime['weekday2'] = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+	bg_btime['weekday3'] = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+	bg_btime['hour'] = ["-й час ночи", "-й час дня"];
+	bg_btime['watch'] = ["I стража ночи", "II стража ночи", "III стража ночи", "IV стража ночи", "I стража дня", "II стража дня", "III стража дня", "IV стража дня"];
+	bg_btime['worship'] = ["Вечерня", "Повечерие", "Полунощница", "Утреня", "1-ый час", "3-ий час", "6-ой час", "9-ый час"];
+}
+
 function getByzantineTime (x, format="", mode=[90,0], time=0 ) {
 	if (!x || (x === undefined) || (x.innerHTML === undefined)) return false;
 	if (!format) format="%0h:%0l:%0j:%0r - %w (%s)";
@@ -157,12 +170,6 @@ function getByzantineTime (x, format="", mode=[90,0], time=0 ) {
 *****************************************************************/
 function showDigitalBTime ( sunset, time, x, format ) {
 	
-	var month1 = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
-	var month2 = ["янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"];
-	var weekday1 = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
-	var weekday2 = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
-	var weekday3 = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
-
 	var bt = time + (24 - sunset)*60*60*1000;
 	var bd = new Date(bt);
 	var h = bd.getHours();					// Часы 
@@ -199,19 +206,19 @@ function showDigitalBTime ( sunset, time, x, format ) {
 		format = format.replace("%2y", y-parseInt(y/100)*100);
 		format = format.replace("%m", m+1);
 		format = format.replace("%0m", (m+1>9)?(m+1):("0"+(m+1)));
-		format = format.replace("%1m", month1[m]);
-		format = format.replace("%2m", month2[m]);
+		format = format.replace("%1m", bg_btime.month1[m]);
+		format = format.replace("%2m", bg_btime.month2[m]);
 		format = format.replace("%d", d);
 		format = format.replace("%0d",(d>9)?d:("0"+d));
 		format = format.replace("%n", n);
 		format = format.replace("%0n",(n>9)?n:("0"+n));
-		format = format.replace("%1n", weekday1[n]);
-		format = format.replace("%2n", weekday2[n]);
-		format = format.replace("%N", weekday3[n]);
+		format = format.replace("%1n", bg_btime.weekday1[n]);
+		format = format.replace("%2n", bg_btime.weekday2[n]);
+		format = format.replace("%N", bg_btime.weekday3[n]);
 		format = format.replace("%h", h);
 		format = format.replace("%0h",(h>9)?h:("0"+h));
 		format = format.replace("%1h",(h<12)?(h+1):(h-11));
-		format = format.replace("%H", (h<12)?((h+1)+"-й час ночи"):((h-11)+"-й час дня"));
+		format = format.replace("%H", (h<12)?((h+1)+bg_btime.hour[0]):((h-11)+bg_btime.hour[0]));
 		format = format.replace("%l", l);
 		format = format.replace("%0l",(l>9)?l:("0"+l));
 		format = format.replace("%j", j);
@@ -226,26 +233,26 @@ function showDigitalBTime ( sunset, time, x, format ) {
 	
 	function watch (h) {
 		var t;
-		if (h < 3) t = "I стража ночи";
-		else if (h < 6) t = "II стража ночи";
-		else if (h < 9) t = "III стража ночи";
-		else if (h < 12) t = "IV стража ночи";
-		else if (h < 15) t = "I стража дня";
-		else if (h < 18) t = "II стража дня";
-		else if (h < 21) t = "III стража дня";
-		else t = "IV стража дня";
+		if (h < 3) t = bg_btime.watch[0];
+		else if (h < 6) t = bg_btime.watch[1];
+		else if (h < 9) t = bg_btime.watch[2];
+		else if (h < 12) t = bg_btime.watch[3];
+		else if (h < 15) t = bg_btime.watch[4];
+		else if (h < 18) t = bg_btime.watch[5];
+		else if (h < 21) t = bg_btime.watch[6];
+		else t = bg_btime.watch[7];
 		return t;
 	}
 	function worship (h) {
 		var t;
-		if (h < 3) t = "Вечерня";
-		else if (h < 6) t = "Повечерие";
-		else if (h < 9) t = "Полунощница";
-		else if (h < 12) t = "Утреня";
-		else if (h < 15) t = "1-ый час";
-		else if (h < 18) t = "3-ий час";
-		else if (h < 21) t = "6-ой час";
-		else t = "9-ый час";
+		if (h < 3) t = bg_btime.worship[0];
+		else if (h < 6) t = bg_btime.worship[1];
+		else if (h < 9) t = bg_btime.worship[2];
+		else if (h < 12) t = bg_btime.worship[3];
+		else if (h < 15) t = bg_btime.worship[4];
+		else if (h < 18) t = bg_btime.worship[5];
+		else if (h < 21) t = bg_btime.worship[6];
+		else t = bg_btime.worship[7];
 		return t;
 	}
 }

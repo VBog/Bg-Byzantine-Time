@@ -1,0 +1,293 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Bg BTime\n"
+"POT-Creation-Date: 2017-01-08 17:01+0300\n"
+"PO-Revision-Date: 2017-01-08 17:04+0300\n"
+"Last-Translator: Vadim Bogaiskov <vadim.bogaiskov@gmail.com>\n"
+"Language-Team: Vadim Bogaiskov <vadim.bogaiskov@gmail.com>\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: bg_btime.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: bg_btime.php:55
+msgid "January"
+msgstr "января"
+
+#: bg_btime.php:55
+msgid "February"
+msgstr "февраля"
+
+#: bg_btime.php:55
+msgid "March"
+msgstr "марта"
+
+#: bg_btime.php:55
+msgid "April"
+msgstr "апреля"
+
+#: bg_btime.php:55 bg_btime.php:56
+msgid "May"
+msgstr "мая"
+
+#: bg_btime.php:55
+msgid "June"
+msgstr "июня"
+
+#: bg_btime.php:55
+msgid "July"
+msgstr "июля"
+
+#: bg_btime.php:55
+msgid "August"
+msgstr "августа"
+
+#: bg_btime.php:55
+msgid "September"
+msgstr "сентября"
+
+#: bg_btime.php:55
+msgid "October"
+msgstr "октября"
+
+#: bg_btime.php:55
+msgid "November"
+msgstr "ноября"
+
+#: bg_btime.php:55
+msgid "December"
+msgstr "декабря"
+
+#: bg_btime.php:56
+msgid "Jan"
+msgstr "янв"
+
+#: bg_btime.php:56
+msgid "Feb"
+msgstr "фев"
+
+#: bg_btime.php:56
+msgid "Mar"
+msgstr "мар"
+
+#: bg_btime.php:56
+msgid "Apr"
+msgstr "апр"
+
+#: bg_btime.php:56
+msgid "Jun"
+msgstr "июн"
+
+#: bg_btime.php:56
+msgid "Jul"
+msgstr "июл"
+
+#: bg_btime.php:56
+msgid "Aug"
+msgstr "авг"
+
+#: bg_btime.php:56
+msgid "Sep"
+msgstr "сен"
+
+#: bg_btime.php:56
+msgid "Oct"
+msgstr "окт"
+
+#: bg_btime.php:56
+msgid "Nov"
+msgstr "ноя"
+
+#: bg_btime.php:56
+msgid "Dec"
+msgstr "дек"
+
+#: bg_btime.php:57
+msgid "sunday"
+msgstr "воскресенье"
+
+#: bg_btime.php:57
+msgid "monday"
+msgstr "понедельник"
+
+#: bg_btime.php:57
+msgid "tuesday"
+msgstr "вторник"
+
+#: bg_btime.php:57
+msgid "wednesday"
+msgstr "среда"
+
+#: bg_btime.php:57
+msgid "thursday"
+msgstr "четверг"
+
+#: bg_btime.php:57
+msgid "friday"
+msgstr "пятница"
+
+#: bg_btime.php:57
+msgid "saturday"
+msgstr "суббота"
+
+#: bg_btime.php:58
+msgid "Sun"
+msgstr "Вс"
+
+#: bg_btime.php:58
+msgid "Mon"
+msgstr "Пн"
+
+#: bg_btime.php:58
+msgid "Tue"
+msgstr "Вт"
+
+#: bg_btime.php:58
+msgid "Wed"
+msgstr "Ср"
+
+#: bg_btime.php:58
+msgid "Thu"
+msgstr "Чт"
+
+#: bg_btime.php:58
+msgid "Fri"
+msgstr "Пт"
+
+#: bg_btime.php:58
+msgid "Sat"
+msgstr "Сб"
+
+#: bg_btime.php:59
+msgid "Sunday"
+msgstr "Воскресенье"
+
+#: bg_btime.php:59
+msgid "Monday"
+msgstr "Понедельник"
+
+#: bg_btime.php:59
+msgid "Tuesday"
+msgstr "Вторник"
+
+#: bg_btime.php:59
+msgid "Wednesday"
+msgstr "Среда"
+
+#: bg_btime.php:59
+msgid "Thursday"
+msgstr "Четверг"
+
+#: bg_btime.php:59
+msgid "Friday"
+msgstr "Пятница"
+
+#: bg_btime.php:59
+msgid "Saturday"
+msgstr "Суббота"
+
+#: bg_btime.php:60
+msgid " AM"
+msgstr "-й час ночи"
+
+#: bg_btime.php:60
+msgid " PM"
+msgstr "-й час дня"
+
+#: bg_btime.php:61
+msgid "I watch AM"
+msgstr "I стража ночи"
+
+#: bg_btime.php:61
+msgid "II watch AM"
+msgstr "II стража ночи"
+
+#: bg_btime.php:61
+msgid "III watch AM"
+msgstr "III стража ночи"
+
+#: bg_btime.php:61
+msgid "IV watch AM"
+msgstr "IV стража ночи"
+
+#: bg_btime.php:61
+msgid "I watch PM"
+msgstr "I стража дня"
+
+#: bg_btime.php:61
+msgid "II watch PM"
+msgstr "II стража дня"
+
+#: bg_btime.php:61
+msgid "III watch PM"
+msgstr "III стража дня"
+
+#: bg_btime.php:61
+msgid "IV watch PM"
+msgstr "IV стража дня"
+
+#: bg_btime.php:62
+msgid "Vespers"
+msgstr "Вечерня"
+
+#: bg_btime.php:62
+msgid "Compline"
+msgstr "Повечерие"
+
+#: bg_btime.php:62
+msgid "Midnight"
+msgstr "Полунощница"
+
+#: bg_btime.php:62
+msgid "Matins"
+msgstr "Утреня"
+
+#: bg_btime.php:62
+msgid "1st hour"
+msgstr "1-ый час"
+
+#: bg_btime.php:62
+msgid "3rd hour"
+msgstr "3-ий час"
+
+#: bg_btime.php:62
+msgid "6th hour"
+msgstr "6-ой час"
+
+#: bg_btime.php:62
+msgid "9th hour"
+msgstr "9-ый час"
+
+#. Plugin Name of the plugin/theme
+msgid "Bg BTime"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://bogaiskov.ru/bg_btime/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Calculates and displays Byzantine time in your location."
+msgstr "Рассчитывает и отображает византийское время в вашем регионе."
+
+#. Author of the plugin/theme
+msgid "VBog"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://bogaiskov.ru"
+msgstr ""
+
+#~ msgid "Calculates and displays Bysantine time in your location."
+#~ msgstr "Рассчитывает и отображает византийское время в вашем регионе."
